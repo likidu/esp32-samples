@@ -1,0 +1,33 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Launch OpenOCD",
+      "command": "openocd.exe",
+      "args": [
+        "-s",
+        "scripts",
+        "-f",
+        "${input:openocd.config}",
+        "-c",
+        "\"bindto 0.0.0.0\""
+    ],
+      "type": "shell",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+  ],
+  "inputs": [
+    {
+      "id": "openocd.config",
+      "type": "pickString",
+      "description": "Select the configuration file for OpenOCD",
+      "options": [
+        "esp32c3-cmsis.cfg"
+      ],
+      "default": "esp32c3-cmsis.cfg"
+    }
+  ]
+}
