@@ -7,27 +7,27 @@
       "label": "Launch OpenOCD",
       "command": "openocd.exe",
       "args": [
-        "-s",
-        "scripts",
         "-f",
-        "${input:openocd.config}",
+        "${workspaceFolder}/../openocd/esp32c3-cmsis.cfg",
         "-c",
         "\"bindto 0.0.0.0\""
-    ],
+      ],
       "type": "shell",
       "isBackground": true,
       "problemMatcher": []
     },
-  ],
-  "inputs": [
     {
-      "id": "openocd.config",
-      "type": "pickString",
-      "description": "Select the configuration file for OpenOCD",
-      "options": [
-        "esp32c3-cmsis.cfg"
+      "label": "Flash with OpenOCD",
+      "command": "openocd.exe",
+      "args": [
+        "-f",
+        "${workspaceFolder}/../openocd/esp32c3-cmsis.cfg",
+        "-c",
+        "\"program_esp ./build/blink.bin 0x10000 verify reset exit\""
       ],
-      "default": "esp32c3-cmsis.cfg"
-    }
+      "type": "shell",
+      "isBackground": false,
+      "problemMatcher": []
+    },
   ]
 }

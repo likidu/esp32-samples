@@ -7,15 +7,15 @@
     {
       "name": "GDB Remote Debug",
       "cwd": "${workspaceFolder}",
-      "executable": "./bin/blink.elf",
+      "executable": "./build/blink.elf",
       "request": "launch",
       "type": "cortex-debug",
       "runToEntryPoint": "main",
-      "servertype": "openocd",
-      "showDevDebugOutput": "both",
+      "servertype": "external",
+      // "showDevDebugOutput": "both",
       "linux": {
         "gdbPath": "riscv32-esp-elf-gdb",
-        "gdbTarget": "172.28.48.1:3333",
+        "gdbTarget": "172.21.160.1:3333",
         "svdFile": null
       }
     }
