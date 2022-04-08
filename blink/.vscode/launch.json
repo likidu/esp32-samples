@@ -5,17 +5,54 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "GDB",
+      "type": "cppdbg",
+      "request": "launch",
+      "MIMode": "gdb",
+      // "miDebuggerPath": "${command:espIdf.getXtensaGdb}",
+      "miDebuggerPath": "/home/liydu/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch3-8.4.0/riscv32-esp-elf/bin/riscv32-esp-elf-gdb",
+      "program": "${workspaceFolder}/build/blink.elf",
+      "windows": {
+        "program": "${workspaceFolder}\\build\\${command:espIdf.getProjectName}.elf"
+      },
+      "cwd": "${workspaceFolder}",
+      // "environment": [{ "name": "PATH", "value": "${config:idf.customExtraPaths}" }],
+      "setupCommands": [
+        { "text": "-enable-pretty-printing" },
+        { "text": "set remotetimeout 100" },
+        { "text": "set arch riscv:rv32" },
+        { "text": "target remote 192.168.224.1:3333" },
+        { "text": "mon reset halt" },
+        { "text": "thb app_main" },
+        { "text": "flushregs" }
+      ],
+      "externalConsole": false,
+      "logging": {
+        "engineLogging": false
+      }
+    },
+    {
       "name": "GDB Remote Debug",
       "cwd": "${workspaceFolder}",
       "executable": "./build/blink.elf",
       "request": "launch",
       "type": "cortex-debug",
-      "runToEntryPoint": "main",
+      // "runToEntryPoint": "app_main",
       "servertype": "external",
-      // "showDevDebugOutput": "both",
+      "showDevDebugOutput": "none",
+      "overrideLaunchCommands": [
+        "-enable-pretty-printing",
+        "set remotetimeout 100",
+        "set arch riscv:rv32",
+        // "set breakpoint pending on",
+        "mon reset halt",
+        "flushregs",
+        "set remote hardware-watchpoint-limit 2",
+        // "thb app_main"
+      ],
       "linux": {
         "gdbPath": "riscv32-esp-elf-gdb",
-        "gdbTarget": "172.21.160.1:3333",
+        "gdbTarget": "192.168.224.1:3333",
         "svdFile": null
       }
     }
