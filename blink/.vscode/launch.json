@@ -5,7 +5,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "GDB",
+      "name": "GDB (just for reference)",
       "type": "cppdbg",
       "request": "launch",
       "MIMode": "gdb",
@@ -21,10 +21,12 @@
         { "text": "-enable-pretty-printing" },
         { "text": "set remotetimeout 100" },
         { "text": "set arch riscv:rv32" },
-        { "text": "target remote 192.168.224.1:3333" },
+        { "text": "target remote 172.21.240.1:3333" },
+        { "text": "set remote hardware-watchpoint-limit 2" },
         { "text": "mon reset halt" },
+        { "text": "flushregs" },
         { "text": "thb app_main" },
-        { "text": "flushregs" }
+        { "text": "continue" },
       ],
       "externalConsole": false,
       "logging": {
@@ -38,13 +40,14 @@
       "request": "launch",
       "type": "cortex-debug",
       // "runToEntryPoint": "app_main",
+      "breakAfterReset": true,
       "servertype": "external",
       "showDevDebugOutput": "none",
       "overrideLaunchCommands": [
         "-enable-pretty-printing",
         "set remotetimeout 100",
         "set arch riscv:rv32",
-        // "set breakpoint pending on",
+        "set breakpoint pending on",
         "mon reset halt",
         "flushregs",
         "set remote hardware-watchpoint-limit 2",
@@ -52,7 +55,7 @@
       ],
       "linux": {
         "gdbPath": "riscv32-esp-elf-gdb",
-        "gdbTarget": "192.168.224.1:3333",
+        "gdbTarget": "172.21.240.1:3333",
         "svdFile": null
       }
     }
