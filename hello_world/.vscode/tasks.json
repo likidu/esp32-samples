@@ -23,7 +23,7 @@
         "-f",
         "${workspaceFolder}/../openocd/esp32c3-cmsis.cfg",
         "-c",
-        "\"program_esp ./build/blink.bin 0x10000 verify reset exit\""
+        "\"program_esp ./build/hello_world.bin 0x10000 verify reset exit\""
       ],
       "type": "shell",
       "isBackground": false,

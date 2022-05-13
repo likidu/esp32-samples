@@ -1,4 +1,4 @@
-idf_component_register(SRCS "hello_world_main.c" INCLUDE_DIRS ".")
+idf_component_register(SRCS "hello_world_threadx.c" INCLUDE_DIRS ".")
 
 # Import threadx library targets
 # add_subdirectory(lib/threadx)

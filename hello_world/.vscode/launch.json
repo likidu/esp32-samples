@@ -11,7 +11,7 @@
       "MIMode": "gdb",
       // "miDebuggerPath": "${command:espIdf.getXtensaGdb}",
       "miDebuggerPath": "/home/liydu/.espressif/tools/riscv32-esp-elf/esp-2021r2-patch3-8.4.0/riscv32-esp-elf/bin/riscv32-esp-elf-gdb",
-      "program": "${workspaceFolder}/build/blink.elf",
+      "program": "${workspaceFolder}/build/hello_world.elf",
       "windows": {
         "program": "${workspaceFolder}\\build\\${command:espIdf.getProjectName}.elf"
       },
@@ -36,7 +36,7 @@
     {
       "name": "GDB Remote Debug",
       "cwd": "${workspaceFolder}",
-      "executable": "./build/blink.elf",
+      "executable": "./build/hello_world.elf",
       "request": "launch",
       "type": "cortex-debug",
       // "runToEntryPoint": "app_main",
